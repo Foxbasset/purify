@@ -33,33 +33,46 @@ exports.absolute = absolute;
 // concatenate first and last names and return
 // resulting array of names
 function concatNames(names){
-  for(var i = 0; i < names.length; i++){
-    names[i] = `${names[i].firstName} ${names[i].lastName}`;
+  let concatClone = [...names];
+  for(var i = 0; i < concatClone.length; i++){
+    concatClone[i] = `${concatClone[i].firstName} ${concatClone[i].lastName}`;
   }
-  return names;
+  return concatClone;
 }
+
+exports.concatNames = concatNames;
 
 // things is an array of numbers and strings. Convert
 // numbers in array to strings. For example 5 to "5"
 function numbersToStrings(things){
-  for(var i = 0; i < things.length; i++){
-    things[i] = typeof things[i] === 'number' ? things[i]+'' : things[i];
-  }
+  let numberClone =[...things];
+  numberClone.forEach(function(thing){
+    thing = typeof thing === 'number' ? thing+'' : thing;
+  });
+  return numberClone;
 }
+
+exports.numbersToStrings = numbersToStrings;
 
 // strings is an array of strings. sort them by length
 function sortByLength(strings){
-  strings.sort(function(a,b){
+  let stringClone =[...strings];
+  stringClone.sort(function(a,b){
     return a.length - b.length;
   });
+  return stringClone;
 }
+
+exports.sortByLength = sortByLength;
 
 // numbers is an array of numbers. Get last two numbers
 // from numbers
 function lastTwo(numbers){
-  return numbers.splice(-2);
+  let numbersClone = numbers.slice(0);
+  return numbersClone.splice(-2);
 }
 
+exports.lastTwo = lastTwo;
 // cars is an array of car objects which look like
 // this
 // {
