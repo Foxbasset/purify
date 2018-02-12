@@ -82,11 +82,18 @@ exports.lastTwo = lastTwo;
 // }
 // increment the years by one year for all cars
 function incrementYear(cars){
+  let carsClone = [];
   for(var i = 0; i < cars.length; i++){
-    cars[i].year++;
+   let deepClone = Object.assign({},cars[i]);
+   carsClone.push(deepClone);
   }
-  return cars;
+  for(var i = 0; i < carsClone.length; i++){
+    carsClone[i].year++;
+  }
+  return carsClone;
 }
+
+exports.incrementYear = incrementYear;
 
 // sales is an object where the key is
 // the salespersons name and the value
@@ -98,16 +105,23 @@ function incrementYear(cars){
 //   Dave: [43, 2, 12]
 // }
 function totalSales( sales ){
-  Object.keys(sales).forEach(function(key){
+  let salesClone = Object.assign({},sales);
+
+  Object.keys(salesClone).forEach(function(key){
     let total = 0;
 
-    for(var i = 0; i < sales[key].length; i++){
-      total = total + sales[key][i];
+    for(var i = 0; i < salesClone[key].length; i++){
+      total = total + salesClone[key][i];
     }
 
-    sales[key] = total;
+    salesClone[key] = total;
   });
+  return salesClone;
 }
+
+exports.totalSales = totalSales;
+
+
 // stuff is an object with string keys and
 // string values. All keys and values are unique
 // Swap keys and values around, so that keys
@@ -117,15 +131,17 @@ function totalSales( sales ){
 //   c: 'd'
 // }
 function swapKeysAndValues(stuff){
-  Object.keys(stuff).forEach(function(key){
-    const value = stuff[key];
-    stuff[value] = key;
-    delete stuff[key];
+  let stuffClone = Object.assign({},stuff);
+  Object.keys(stuffClone).forEach(function(key){
+    const value = stuffClone[key];
+    stuffClone[value] = key;
+    delete stuffClone[key];
   });
 
-  return stuff;
+  return stuffClone;
 }
 
+exports.swapKeysAndValues = swapKeysAndValues;
 // dates is an array of dates in string format
 // 'yyyy-mm-dd' convert dates to date object.
 // For example, '2018-02-12' is 12th Feb 2018

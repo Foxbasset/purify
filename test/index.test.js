@@ -57,11 +57,89 @@ test('sortByLength', function(){
   expect(sortByLengthInput).toEqual(intactByLength);
 });
 
-test.only('lastTwo', function(){
+test('lastTwo', function(){
   const lastTwoSInput = [1,5,120,30,88];
   const expected = [30,88];
   const result = functions.lastTwo(lastTwoSInput);
   const intactLastTwo = [1,5,120,30,88];
   expect(result).toEqual(expected);
   expect(lastTwoSInput).toEqual(intactLastTwo);
+});
+
+test('incrementYear', function(){
+  const carsInput = [{
+   make: "Vauxhall",
+   model: "Astra",
+   year: 1992
+}, {
+   make: "Honda",
+   model: "Accord",
+   year: 1987
+},
+{
+   make: "Fiat",
+   model: "500",
+   year: 2003
+}];
+  const expected = [{
+   make: "Vauxhall",
+   model: "Astra",
+   year: 1993
+}, {
+   make: "Honda",
+   model: "Accord",
+   year: 1988
+},
+{
+   make: "Fiat",
+   model: "500",
+   year: 2004
+}];
+  const result = functions.incrementYear(carsInput);
+  const intactCarsInput = [{
+   make: "Vauxhall",
+   model: "Astra",
+   year: 1992
+}, {
+   make: "Honda",
+   model: "Accord",
+   year: 1987
+},
+{
+   make: "Fiat",
+   model: "500",
+   year: 2003
+}];
+  expect(result).toEqual(expected);
+  expect(carsInput).toEqual(intactCarsInput);
+});
+
+test('totalSales', function(){
+  const salesInput = {
+  Max: [35,67,888,90],
+  Bob: [7,90,23,15],
+  Ellen: [456,789,123],
+};
+  const expected = {
+  Max: 1080,
+  Bob: 135,
+  Ellen: 1368,
+  };
+  const result = functions.totalSales(salesInput);
+  const intactSales = {
+  Max: [35,67,888,90],
+  Bob: [7,90,23,15],
+  Ellen: [456,789,123],
+};
+  expect(result).toEqual(expected);
+  expect(salesInput).toEqual(intactSales);
+});
+
+test.only('swapKeysAndValues', function(){
+  const swapKeysInput = { a: 'b', c: 'd', e: 'f'};
+  const expected = { b: 'a', d: 'c', f: 'e'};
+  const result = functions.swapKeysAndValues(swapKeysInput);
+  const intactSwapKeys = { a: 'b', c: 'd', e: 'f'};
+  expect(result).toEqual(expected);
+  expect(swapKeysInput).toEqual(intactSwapKeys);
 });
