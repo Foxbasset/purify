@@ -1,20 +1,30 @@
 // numbers is an array of numbers. Multiply all
 // numbers contained in array by multiplier
 function multiply(numbers, multiplier){
-  for(var i = 0; i < numbers.length; i++){
-    numbers[i] = numbers[i] * multiplier;
+  let numbersClone = [...numbers];
+  for(var i = 0; i < numbersClone.length; i++){
+    numbersClone[i] = numbersClone[i] * multiplier;
   }
 
-  return numbers;
+  return numbersClone;
 }
+
+exports.multiply = multiply;
 
 // is an array of positive and negative numbers
 // make them all absolute numbers
 function absolute(numbers){
-  for(var i = 0; i < numbers.length; i++){
-    numbers[i] = +numbers[i];
+  let numbersAbClone = [...numbers];
+  for(var i = 0; i < numbersAbClone.length; i++){
+    if(numbersAbClone[i]>0){
+    numbersAbClone[i] = +numbersAbClone[i];}
+    else{
+    numbersAbClone[i] = -numbersAbClone[i];}
   }
+  return numbersAbClone;
 }
+
+exports.absolute = absolute;
 // names is an array of name of nameObjects
 // {
 //   firstName: 'Alan',
